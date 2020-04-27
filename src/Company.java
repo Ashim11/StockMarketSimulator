@@ -10,13 +10,56 @@
  */
 public class Company {
     
-    public int id;
+    private int id;
     
-    public int numShares;
+    private int numShares;
     
-    public int SharesPrice;
+    private int SharesPrice;
     
-    public int numSharesSold;
+    private int numSharesSold;
+    
+    private Company(int id, int numShares, int SharePrice){
+        
+        this.id = id;
+        this.SharesPrice= SharePrice;
+        this.numShares = numShares;
+        
+    
+    
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getNumShares() {
+        return numShares;
+    }
+
+    public int getSharesPrice() {
+        return SharesPrice;
+    }
+
+    public int getNumSharesSold() {
+        return numSharesSold;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNumShares(int numShares) {
+        this.numShares = numShares;
+    }
+
+    public void setSharesPrice(int SharesPrice) {
+        this.SharesPrice = SharesPrice;
+    }
+
+    public void setNumSharesSold(int numSharesSold) {
+        this.numSharesSold = numSharesSold;
+    }
+    
     
     
 }
