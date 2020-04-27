@@ -1,3 +1,7 @@
+
+import java.util.List;
+import java.util.stream.IntStream;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -59,7 +63,57 @@ public class Company {
     public void setNumSharesSold(int numSharesSold) {
         this.numSharesSold = numSharesSold;
     }
+
+    private IntStream getnumSharesSold() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
+  //builder pattern 
+    public static class CompanyBuilder{
+        
+        private int id;
+        private int SharesPrice;
+        private int numSharesSold;
+        
     
+        public CompanyBuilder setId(int id){
+            this.id = id;
+            return this;
+        }
+        
+        public CompanyBuilder setSharesPrice(int SharesPrice){
+            this.SharesPrice=SharesPrice;
+            return this;
+        
+        }
+        
+        public CompanyBuilder setnumSharesSold(int numSharesSold){
+            this.numSharesSold=numSharesSold;
+            return this;
+        
+        }
+        
+        
+        public Company build(){
+            return new Company(id,SharesPrice,numSharesSold);
+        }
+        
+	public int updateInitial(List<?> list) {
+		List<Company> companies = (List<Company>) list;
+		int initialSharesPrice = companies.stream().mapToInt(value -> value.getSharesPrice()).sum();
+		return initialSharesPrice;
+	}
+
+	public int updateCurrent(List<?> list) {
+		List<Company> companies = (List<Company>) list;
+		int numSharesSold = companies.stream().mapToInt(value -> value.getnumSharesSold()).sum();
+		return numSharesSold;
+	}
+
+	public void elementDetails(Object obj) {
+		System.out.println("Company ID:"+id+"  "+"Shares"+SharesPrice);
+	}
+        
+    }
     
 }
