@@ -1,6 +1,7 @@
 
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Observable;
+
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,108 +13,88 @@ import java.util.stream.IntStream;
  *
  * @author Ashim
  */
+// Company class defines a company that sells share.
+
 public class Company {
     
+    //unique ID of the company
     private int id;
     
+    //number of shares left
     private int numShares;
     
-    private int SharesPrice;
+    //current price of share
+    private int sharePrice;
     
+    //total number of shares sold
     private int numSharesSold;
     
-    private Company(int id, int numShares, int SharePrice){
+    
+    /*
+   class constroctor that instantiates a new company with given parameters.
+    @param id the unique ID
+     @param numShares the initial number of shares 
+     @param sharePrice the initial share price 
+    */
+    public Company(int id, int numShares, int sharePrice){
         
         this.id = id;
-        this.SharesPrice= SharePrice;
+        this.sharePrice= sharePrice;
         this.numShares = numShares;
-        
+        numSharesSold=0;
+    }
     
+    //sell a share
+    public void sell(){
+        numShares--;
+        numSharesSold++;
     
     }
-
-    public int getId() {
-        return id;
+    
+    //Get the current price of the share.
+    //@return the current price of the share 
+    public int getSharesPrice(){
+        return sharePrice;
     }
-
-    public int getNumShares() {
-        return numShares;
+    
+    //set the price of the share.
+    //@return sharePrice the new price of the share
+    public void setSharePrice(int sharePrice){
+        this.sharePrice = sharePrice;
+    
     }
-
-    public int getSharesPrice() {
-        return SharesPrice;
-    }
-
-    public int getNumSharesSold() {
+    
+    //get the number of shares sold by the seller.
+    //@return the number of shares sold 
+    public int getNumSharesSold(){
         return numSharesSold;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setNumShares(int numShares) {
-        this.numShares = numShares;
-    }
-
-    public void setSharesPrice(int SharesPrice) {
-        this.SharesPrice = SharesPrice;
-    }
-
-    public void setNumSharesSold(int numSharesSold) {
-        this.numSharesSold = numSharesSold;
-    }
-
-    private IntStream getnumSharesSold() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
     
-  //builder pattern 
-    public static class CompanyBuilder{
-        
-        private int id;
-        private int SharesPrice;
-        private int numSharesSold;
-        
-    
-        public CompanyBuilder setId(int id){
-            this.id = id;
-            return this;
-        }
-        
-        public CompanyBuilder setSharesPrice(int SharesPrice){
-            this.SharesPrice=SharesPrice;
-            return this;
-        
-        }
-        
-        public CompanyBuilder setnumSharesSold(int numSharesSold){
-            this.numSharesSold=numSharesSold;
-            return this;
-        
-        }
-        
-        
-        public Company build(){
-            return new Company(id,SharesPrice,numSharesSold);
-        }
-        
-	public int updateInitial(List<?> list) {
-		List<Company> companies = (List<Company>) list;
-		int initialSharesPrice = companies.stream().mapToInt(value -> value.getSharesPrice()).sum();
-		return initialSharesPrice;
-	}
-
-	public int updateCurrent(List<?> list) {
-		List<Company> companies = (List<Company>) list;
-		int numSharesSold = companies.stream().mapToInt(value -> value.getnumSharesSold()).sum();
-		return numSharesSold;
-	}
-
-	public void elementDetails(Object obj) {
-		System.out.println("Company ID:"+id+"  "+"Shares"+SharesPrice);
-	}
-        
+    //check whether seller has shares left to sell.
+    //@return true if seller has shares, otherwise return false 
+    public boolean hasShares(){
+        return (numShares > 0);
     }
     
+    //get the total capital of the seller which is current share price times number of shares sold
+    //@return the total capital of seller
+    public int getCapital(){
+        return (numSharesSold * sharePrice);
+    }
+    
+    
+    //get a string representation of the seller.
+    //@return a string representing the seller 
+    @Override
+    public String toString(){
+        return "Company-"+id;
+    }
+    
+    //handler for the event when total number of shares sold is 10
+    public void update(Observable o, Object arg){
+        if(numSharesSold == 0){
+            sharePrice -= sharePrice * 0.02;
+        }
+    }
 }

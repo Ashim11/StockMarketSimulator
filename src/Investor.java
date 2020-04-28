@@ -82,6 +82,10 @@ public class Investor {
 		public Investor build(){
 			return new Investor(id,budget);
 		}
+
+        Object setId(String test) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
 	}
 
 	public int updateInitial(List<?> list) {

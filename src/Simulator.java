@@ -20,5 +20,8 @@ public class Simulator {
         /*Creating Investor object*/
         Investor inv = new Investor.InvestorBuilder().setId("TEST").setBudjet(100).build(); 
         /*Creating Company object*/
-	Company comp = new Company.CompanyBuilder().setId("TEST").setnumShares(100).setShare(10).build();  
+	Company comp = new Company.CompanyBuilder().setId("TEST").setnumShares(100).setSharePrice(10).build();  
+        
+        
+        
 }
