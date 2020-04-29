@@ -22,12 +22,14 @@ public class Factory {
     Static int nextInvestorID = 2;
     
     public static Seller createSeller(int minNumShares, int maxNumShares, int minSharesPrice, int maxSharePrice){
-       return null;
+        Seller seller = null;
+       return seller;
        
     }
     
     public static Investor createInvestor(int minBudget, int maxBudget ){
-        return null;
+        Investor investor = null;
+        return investor;
     }
     
     
