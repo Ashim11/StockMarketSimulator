@@ -1,3 +1,5 @@
+import java.util.Observable;
+import java.util.Observer;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,7 +10,7 @@
  *
  * @author Ashim
  */
-public abstract class SellerDecorator {
+public abstract class SellerDecorator implements Seller{
     
     private Seller seller;
     
@@ -44,6 +46,9 @@ public abstract class SellerDecorator {
         return seller.toString();
     }
     
+    public void update(Observable o, Object arg){
+        seller.update(o, arg);
+    }
    
     
 }

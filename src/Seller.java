@@ -1,3 +1,6 @@
+
+import java.util.Observer;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,7 +14,7 @@
 
 //This inteface defines a company that sell shares.
 
-public interface Seller {
+public interface Seller extends Observer {
     
     /*
     sell a single copy of the share at current price
@@ -37,8 +40,26 @@ public interface Seller {
     public boolean hasShares();
     
     /*
-    Get the number shares sold by the seller */
+    Get the number shares sold by the seller
+    
+    @return the number of shares sold
+    */
     public int getNumSharesSold();
+    
+    /*
+    Get the toatl capital of seller which is current share price times 
+    number of shares sold.
+    
+    @return the total capital of seller
+    */
+    public int getCapital();
+    
+    /*
+    Get a string representation of the seller.
+   
+    @return A string representation the seller.
+    */
+    public String toString();
     
     
     
