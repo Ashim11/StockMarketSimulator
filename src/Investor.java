@@ -1,6 +1,4 @@
 
-import java.util.ArrayList;
-import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,96 +10,80 @@ import java.util.List;
  *
  * @author Ashim
  */
+
+//This class implements the investor for the trading simulation.
+
 public class Investor {
     
+    //unique ID
     private int id;
     
+    //current budget
     private int budget;
     
+    //number of shares purchased 
     private int numSharesPurchased;
     
-    private Investor(int id, int budget){
+    /*
+    class constructor that instantiates a new Investor object
+    with given parameters
+    
+    @param id the unique ID
+    @param budget the initial budget
+    
+    */
+    public Investor(int id, int budget){
         this.id = id;
         this.budget=budget;
         
     }
-    private List<Company> investedCompanies = new ArrayList<>();
     
-    private void addInvestedCompany(Company c){
-        investedCompanies.add(c);
+    /*
+    Buy a share from seller
+    @param share the given seller
     
-    }
-
+    */
+   public void buy(Seller share){
+       budget -= share.getSharePrice();
+       numSharesPurchased++;
+       
+   
+   } 
+   
+   /*
+   Get the unique ID of the investor
+   @return the unique ID
+   */
     public int getId() {
-        return id;
+         return id;
     }
 
-    public int getBudget() {
-        return budget;
-    }
-
+   /*
+    Get total number of shares purchased 
+    @return total number of shares purchased
+    */
     public int getNumSharesPurchased() {
         return numSharesPurchased;
     }
 
-    public List<Company> getInvestedCompanies() {
-        return investedCompanies;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setBudget(int budget) {
-        this.budget = budget;
-    }
-
-    public void setNumSharesPurchased(int numSharesPurchased) {
-        this.numSharesPurchased = numSharesPurchased;
-    }
-
-    public void setInvestedCompanies(List<Company> investedCompanies) {
-        this.investedCompanies = investedCompanies;
+   /*
+    check whether there is budget left.
+    
+    @param the shares price 
+    @return true if there is budget for the shares price, else return 0
+    */
+    public boolean hasBudget(int sharePrice){
+        return budget >= sharePrice;
     }
     
-    //builder pattern
-    public static class InvestorBuilder{
-		private int id;
-		private int budget;
-
-		public InvestorBuilder setId(int id){
-			this.id = id;
-			return this;
-		}
-
-		public InvestorBuilder setBudjet(int budget){
-			this.budget = budget;
-			return this;
-		}
-
-		public Investor build(){
-			return new Investor(id,budget);
-		}
-
-        Object setId(String test) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-	}
-
-	public int updateInitial(List<?> list) {
-		//List<Investor> investors = (List<Investor>) list;
-		//int allInvestorBudget = investors.stream().mapToInt(value -> value.getBudget()).sum();
-		return 1;
-	}
-
-	public int updateCurrent(List<?> list) {
-		List<Investor> investors = (List<Investor>) list;
-		int currentInvestorsBudget = investors.stream().mapToInt(investor -> investor.getBudget()).sum();
-		return currentInvestorsBudget;
-	}
-
-	public void elementDetails(Object obj) {
-		System.out.println("Investor ID:"+id+"  "+"Budget:"+budget);
-	}
+    /*
+    Get a string representation of the investor.
     
+    @return A string representation the investor.
+    */
+    @Override
+    public String toString(){
+    return "Investor-"+id;
+    }
+        
 }
