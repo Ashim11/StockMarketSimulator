@@ -1,5 +1,6 @@
 
 import java.util.List;
+import java.util.Observable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,7 +17,7 @@ This class wil implements the trading day between a list of companies and
 investor and after trading simlulation is complete shows report to user with choice. 
 
 */
-public class Trading {
+public class Trading extends Observable {
     
     //list of input companies for the simulation
     private List<Seller> companies;

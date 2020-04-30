@@ -18,11 +18,11 @@ public class Factory {
     
     static Random rand = new Random();
     
-    Static int nextSellerID = 1;
-    Static int nextInvestorID = 2;
+   static int nextSellerID = 1;
+   static int nextInvestorID = 2;
     
     /*
-    Generate a company with number of shares and shares orice from given
+    Generate a company with mber of shares and shares orice from given
     range.
     
     @param minNumShares the min number of shares
@@ -35,8 +35,9 @@ public class Factory {
         int numShares = minNumShares + rand.nextInt(maxNumShares - minNumShares) + 1;
 	int sharePrice  = minSharePrice + rand.nextInt(maxSharePrice - minSharePrice) + 1;
 	Company c = new Company(nextSellerID, numShares, sharePrice);
-        Seller seller = null;
-       return seller;
+	Seller seller = new PriceModifierSeller(c);
+	nextSellerID++;
+	return seller;
        
     }
     
@@ -49,10 +50,10 @@ public class Factory {
     
     */
     public static Investor createInvestor(int minBudget, int maxBudget ){
-        int budget = minBudget + rand.nextInt(maxBudget - minBudget) + 1;
+       int budget = minBudget + rand.nextInt(maxBudget - minBudget) + 1;
 	Investor investor = new Investor(nextInvestorID, budget);
 	nextInvestorID++;
-        return investor;
+	return investor;
     }
     
     

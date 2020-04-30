@@ -1,5 +1,6 @@
 
 import java.util.Observable;
+import java.util.Observer;
 
 
 
@@ -15,7 +16,7 @@ import java.util.Observable;
  */
 // Company class defines a company that sells share.
 
-public class Company {
+public class Company implements Seller, Observer{
     
     //unique ID of the company
     private int id;
@@ -39,8 +40,8 @@ public class Company {
     public Company(int id, int numShares, int sharePrice){
         
         this.id = id;
-        this.sharePrice= sharePrice;
         this.numShares = numShares;
+        this.sharePrice= sharePrice;
         numSharesSold=0;
     }
     
@@ -53,7 +54,7 @@ public class Company {
     
     //Get the current price of the share.
     //@return the current price of the share 
-    public int getSharesPrice(){
+    public int getSharePrice(){
         return sharePrice;
     }
     
