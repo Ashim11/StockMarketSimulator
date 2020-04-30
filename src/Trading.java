@@ -40,7 +40,49 @@ public class Trading {
     private Investor lowestSharesPurchasedInvestor;
     
     
+    /*
+    class constructor that creates a new Trading object with given parameters.
+    
+    @param companies list input of seller
+    @param investor input list of investor
+    */
+    public Trading(List<Seller> companies,List<Investor> investors){
+        this.companies = companies;
+        this.investors = investors;
+        totalSharesSoldInCurrPhase = 0;
+        for(Seller seller : companies) {
+            this.addObserver(seller);
+        }
+    }
+    
+    /*
+    Execute the simulation of a trading day.
+    */
+    public void run(){
+    
+    }
+    
+    /*
+    
+    */
+    private Seller chooseSellerWithLeastPrice(Investor buyer){
+    
+        return null;
+    }
     
     
+    /*
+    this will compute all the required report 
+    */
+    private void computerReport(){
+    
+    }
+    
+    /*
+    wil show interactive reports to user.
+    */
+    private void showReports(){
+    
+    }
     
 }
