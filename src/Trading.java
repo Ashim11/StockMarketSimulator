@@ -177,26 +177,26 @@ public class Trading extends Observable {
             //read choice 
             System.out.println("\nEnter your choice [0-4]");
             menuChoice = input.nextInt();
-            switch(menuChoice){
-            case 1:
-                System.out.println(highestCapitalCompany.toString() + "(Capital: " + highestCapitalCompany()+ ")\n");
-                break;
-            case 2:
-                System.out.println(lowestCapitalCompany.toString() + "(Capital: " + lowestCapitalCompany()+ ")\n");
-                break;
-            case 3:
-                System.out.println(highestSharesPurchasedInvestor.toString() + "(#Shares Purchsed: " + highestSharesPurchasedInvestor.getNumSharesPurchased()+ ")\n");
-                break;
-            case 4:
-                System.out.println(lowestSharesPurchasedInvestor.toString() + "(#Shares Purchsed: " + lowestSharesPurchasedInvestor.getNumSharesPurchased()+ ")\n");
-                break;
-            case 0:
-                System.out.println("Report company");
-                break;
-            default:
-                System.out.println("Invalid menu choice! Must be between 0 - 4. \n");
-                break;
-            }
+            switch(menuChoice) {
+			case 1:
+				System.out.println(highestCapitalCompany.toString() + " (Capital: " + highestCapitalCompany.getCapital()+")\n");
+				break;
+			case 2:
+				System.out.println(lowestCapitalCompany.toString() + " (Capital: " + lowestCapitalCompany.getCapital()+")\n");
+				break;
+			case 3:
+				System.out.println(highestSharesPurchasedInvestor.toString() + " (#Shares Purchased: " + highestSharesPurchasedInvestor.getNumSharesPurchased()+")\n");
+				break;
+			case 4:
+				System.out.println(lowestSharesPurchasedInvestor.toString() + " (#Shares Purchased: " + lowestSharesPurchasedInvestor.getNumSharesPurchased()+")\n");
+				break;
+			case 0:
+				done = true;
+				break;
+			default:
+				System.out.println("Invalid menu choice! Must be between 0 - 4.\n");
+				break;
+			}
             
         
         }

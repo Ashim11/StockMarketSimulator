@@ -14,6 +14,12 @@ import java.util.Random;
  *
  * @author Ashim
  */
+
+/*
+The main driver class that generates 100 companies and 100 investor and run 
+the trading day simulation.
+*/
+
 public class Main {
     
         
@@ -26,7 +32,12 @@ public class Main {
         private static final int MAX_NUM_SHARES= 100;
         
         
+        /*
+        Generates a list of companies with random number of shares and price 
         
+        @param howMany how many companies to be generates
+        @return the list of generated seller
+        */
         public static List<Seller> createCompanies(int howMany){
             List<Seller> companies = new ArrayList<Seller>();
             for(int i=0; i < howMany; i++){
@@ -36,6 +47,12 @@ public class Main {
             return companies;
         }
         
+        /*
+        Generate a list of investor with random value of budget.
+        
+        @param howMany how many investors to be generated
+        @return the list of generated investors
+        */
         public static List<Investor> createInvestors(int howMany){
             List<Investor> investors = new ArrayList<Investor>();
             for(int i=0; i < howMany; i++){
@@ -48,8 +65,18 @@ public class Main {
     
     public static void main(String[]args){
         
+        //generate 100 sellers
+        List<Seller> companies = createCompanies(100);
+        System.out.println("Generated 100 companies with random number of shares and price.");
         
-
+        //generate 100 investors 
+        List<Investor> investors = createInvestors(100);
+        System.out.println("Generated 100 investors with random budget.");
+        
+        //run the trading day
+        System.out.println("Running simulation for a trading day...please wait");
+        Trading trading = new Trading(companies, investors);
+        trading.run();
     
     
     
